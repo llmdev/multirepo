@@ -1,0 +1,6 @@
+[submodule "back"]
+	path = back
+	url = https://github.com/llmdev/back_graphql.git
+[submodule "front"]
+	path = front
+	url = https://github.com/llmdev/front_graph.git
