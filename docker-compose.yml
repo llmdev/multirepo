@@ -1,0 +1,39 @@
+version: '3.9'
+
+services: 
+  front:
+    build:
+      dockerfile: ./Dockerfile
+      context: ./front
+    image: multirepo/front
+    volumes:
+      - ./front:/app
+      - ./front/node_modules:/app/node_modules
+    container_name: frontend-sub
+    ports:
+      - 3000:3000
+    depends_on:
+      - backend
+  backend:
+    build:
+      dockerfile: ./Dockerfile
+      context: ./back
+    image: multirepo/back
+    volumes:
+      - ./back:/backend
+      - ./back/node_modules:/backend/node_modules
+    container_name: backend-sub
+    ports:
+      - 3001:3001
+    depends_on:
+      - database
+  database:
+    image: postgres
+    environment:
+      POSTGRES_USERNAME: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: monorepo
+    ports:
+      - 5432:5432
+
+

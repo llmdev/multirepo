@@ -1,0 +1,12 @@
+{
+  "name": "multirepo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "install": "cd back && npm install && cd ../front && npm install"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
